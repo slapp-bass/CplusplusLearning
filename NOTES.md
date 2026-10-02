@@ -2,6 +2,17 @@
 
 ## C++ Initiation
 ### myfirst.cpp
+```C++
+#include <iostream>                                     // a PREPROCESSOR directive
+int main(void)                                              // function header
+{                                                       // start of function body
+    using namespace std;                                // make definitions visible
+    cout << "Come up and C++ me some time.";            // message
+    cout << endl;                                       // start a new line
+    cout << "You won’t regret it!" << endl;             // more output
+    return 0;                                           // terminate main()
+}                                                       // end of function body
+```
 #### Main Function - 24/09
 - create an C++ file with .cpp
 - the `int main()` is a function header (the main is to say what code to run)
@@ -23,7 +34,7 @@
 #### Header Filenames - 28/09
 - files such as `iostream` are called include files because it is included in other files, or header files because it comes at the start
 - the `h` extention was used as a way to identify the file name in C, which is still usable in C++, but it got rid of the need to add it, for example the `math.h` file for various math functions in C was used. The `h` extension is only for older C header files now which C++ can still use, and C++ header files doesn't have the extension. such as `iostream.h` -> `iostream`
-- some C header files has changed in its name so it matches the C++ header files by dropping the `h` extension, and prefixing with a `c`. for example the file `math.h` becaume `cmath` to indicate it comes from C.
+- some C header files has changed in its name so it matches the C++ header files by dropping the `h` extension, and prefixing with a `c`. for example the file `math.h` becaume `cmath` to indicate it comes from C
 
 #### Namespaces - 28/09
 - `using namespace std;` makes the definitions in `iostream` available
@@ -129,4 +140,86 @@ int main ( ) // ALSO VALID, white space used in ( )
     - An opening brace and a closing brace for a function, each of which is on its own line
     - Statements in a function indented from the braces
     - No whitespace around the parentheses associated with a function name
-- the first 3 is to keep the code clean and easy to read, the 4th is to differentiate code between functions and other code using parenthesis such as loops
+- the first 3 is to keep the code clean and easy to read, the 4th is to differentiate code between functions and other code using parenthesis such as loop
+
+## C++ Statements
+### carrots.cpp
+```C++
+#include <iostream>
+int main()
+{
+    using namespace std;
+
+    int carrots;                        // declare an integer variable
+
+    carrots = 25;                       // assign a value to the variable
+    cout << "I have ";
+    cout << carrots;                    // display the value of the variable
+    cout << " carrots.";
+    cout << endl;
+    carrots = carrots - 1;              // modify the variable
+    cout << "Crunch, crunch. Now I have " << carrots << " carrots." << endl;
+    return 0;
+}
+```
+#### Declaration Statements and Variables
+- in order to store information in the computer, you have to specify the storage location and storage space the information takes.
+- you store C++ variables using a declaration statement, indicating the type, and a label for the information.
+- the statement provides 2 things, the type of information and the label of the information. for example having `int` at the beginning specifies the information is an integer, similar to how we declare a return type for a function.
+- the compiler takes care of the specifics, where the memory is allocated and labled in memory. 
+- just like in any other language(or most languages) not declaring a variable will result in an error.
+- a declaration statement is called a defining declaration statement or definition for short, and in more complex situations there are reference declarations. 
+- reference declarations tells the computer to use a variable that was defined previously. 
+- in languages such as C and Pascal, variable declaration normally comes at the very beginning of the program. but in C++, there isn't this restriction and you can declare a variable right before it is first used, for code simplicity
+
+
+#### Assignment Statements
+- an assignment statement assigns a value to a variable, more specifically a storage location.
+- the `=` symbol is an assignment operator just like in any other language, and something you can do in C++ is using is serially:
+```C++
+int steinway;
+int baldwin;
+int yamaha;
+yamaha = baldwin = steinway = 88;
+```
+- the code above you evaluate from right to left, basically going from 88 is assigned to steinway, which is now 88, which is now assigned to baldwin, which is now 88, which is assigned to yamaha.
+- you can modify variables using the assignment operator by for example using arithmetics for ints.
+
+#### Variables in `cout`
+- you can print out variables in C++ using `cout` and the insertion operator `<<`.
+- printing an integer, the code first converts the variable into the integer stored, lets say 25. after that it translates it's values into the corresponding output characters.
+- keep in mind that 25 and "25" is not the same
+- in C, using printf required having special characters before the given variable when joining things in a print statement, such as indicating the text is joining a string, or a text is joining an integer, etc, but using `cout`, it automatically adjusts the output to get rid of the requirements in C.
+
+## More C++ Statements
+### getinfo.cpp
+```C++
+#include <iostream>
+int main()
+{
+    using namespace std;
+
+    int carrots;
+
+    cout << "How many carrots do you have?" << endl;
+    cin >> carrots;                    // C++ input
+    cout << "Here are two more. ";
+    carrots = carrots + 2;
+    // the next line concatenates output
+    cout << "Now you have " << carrots << " carrots." << endl;
+    return 0;
+}
+```
+#### Using `cin`
+- the line `cin >> carrots` allows users to input into the code, through whatever they use such as the terminal
+- this line considers the output of the input to be flowing into the variable `carrots` indicated by the insertion operator `>>`.
+- `cin` similar to `cout` is a smart object and also converts the input to whatever type the variable needs or stores
+
+#### `cout` Concatenation
+- using the insertion operator, it can be used to concatenate characters together by combining it with multiple strings, varibles, and manipulators. 
+- this doesn't have to be in the same line, it could be spearated in multiple lines, using multiple `cout`, and as long as we don't use any manipulators or newline characters, the code will output on the same line. 
+
+#### `cin` and `cout` Classes
+- classes similar to other OOP in other languages, are basically blueprints and the objects are instances of these classes
+- variables and objects aren't exactly the same thing. `cout` is an object that was created with the properties of the `ostream` class, and `cin` is an object that was created with the properties of the `istream` class.
+- classes are generally user defined types, but there are like function libraries, class libraries that was predefined somewhere else.
