@@ -1,4 +1,4 @@
-# C++ Notes
+# C++ Chapter 1 notes
 
 ## C++ Initiation
 ### myfirst.cpp
@@ -223,3 +223,113 @@ int main()
 - classes similar to other OOP in other languages, are basically blueprints and the objects are instances of these classes
 - variables and objects aren't exactly the same thing. `cout` is an object that was created with the properties of the `ostream` class, and `cin` is an object that was created with the properties of the `istream` class.
 - classes are generally user defined types, but there are like function libraries, class libraries that was predefined somewhere else.
+
+## Functions
+#### Function that has a return value
+- a function returns when calling a function gives back a different value 
+- for example using `sqrt()` with a passed in argument returns the square rot of the value
+### sqrt.cpp
+```C++
+#include <iostream>
+#include <cmath> // or math.h
+int main()
+{
+    using namespace std;
+
+    double area;
+    cout << "Enter the floor area, in square feet, of your home: ";
+    cin >> area;
+    double side;
+    side = sqrt(area);
+    cout << "That’s the equivalent of a square " << side
+        << " feet to the side." << endl;
+    cout << "How fascinating!" << endl;
+    return 0;
+}
+```
+#### Function Variations
+- functions has variety depending on the return value and the parameters
+- return values are the type of variables that are returned by the function, for example it can return an `int` for a integer, `bool` for a boolean, or `void` to return nothing
+- a parameter can be different as well, the things that can be passed into the program, which could be `double` for doubles (decimal allowed), `int` for integer, or `void` or nothing inside for no parameters. there can be multiple parameters to a function.
+
+## User Defined Functions
+### ourfunc.cpp
+```C++
+#include <iostream>
+void simon(int); // function prototype for simon()
+
+int main()
+{
+    using namespace std;
+    simon(3); // call the simon() function
+    cout << "Pick an integer: ";
+    int count;
+    cin >> count;
+    simon(count); // call it again
+    cout << "Done!" << endl;
+    return 0;
+}
+
+void simon(int n) // define the simon() function
+{
+    using namespace std;
+    cout << "Simon says touch your toes " << n << " times." << endl;
+} // void functions don’t need return statements
+```
+#### Function Form
+- a form of a function is generally as follows:
+type functionname(argumentList)
+{
+    statements
+}
+- similar to the main function, the type is the return type, functionname is the name of the function, the argumentlist is the where all the arguments are listed, and the statemetns is the logic part.
+
+#### Function Headers
+- if a function has a void return type, you can call it anywhere but can't assign that to a variable as there isn't anythign being returned
+
+## Using User Defined Functions with Return Type
+### convert.cpp
+```C++
+#include <iostream>
+int stonetolb(int); // function prototype
+int main()
+{
+    using namespace std;
+    int stone;
+    cout << "Enter the weight in stone: ";
+    cin >> stone;
+    int pounds = stonetolb(stone);
+    cout << stone << " stone = ";
+    cout << pounds << " pounds." << endl;
+    return 0;
+}
+int stonetolb(int sts)
+{
+    return 14 * sts;
+}
+```
+- basically how this program works is very similar to the previous code, but this time instead of the function printing a value, it returns a value from the function which is stored inside another variable which is then used to output
+
+#### Using Directive in Multifunction Programs
+- in the ourfunc.cpp file, we had the using directive for the STD namespace in both the main and the function as in order to use the function without the namesapce, we have to add that. but we can actually remove that by having the using directive outside any function such as this to use the functions without the namespace:
+```C++
+#include <iostream>
+using namespace std;// affects all function definitions in this file
+void simon(int); 
+
+int main()
+{
+    simon(3); 
+    cout << "Pick an integer: ";
+    int count;
+    cin >> count;
+    simon(count); 
+    cout << "Done!" << endl;
+    return 0;
+}
+
+void simon(int n) 
+{
+    cout << "Simon says touch your toes " << n << " times." << endl;
+} 
+```
