@@ -17,4 +17,5 @@ int main(){
     if (ageMap.find("Bob") != ageMap.end()){ 
         std::cout << "Bob is in the map.\n"; 
     }
+    return 0;
 }
